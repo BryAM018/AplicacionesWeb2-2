@@ -13,3 +13,4 @@ const EspacioSchema = Schema(
     }
 );
 
+module.exports = model('Espacio', EspacioSchema );

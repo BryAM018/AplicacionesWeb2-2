@@ -61,7 +61,7 @@ const deleteVehiculo =  async (req, res= response)=>{
  module.exports ={
     createVehiculo,
     getVehiculo,
-    getCategories,
+    getVehiculos,
     updateVehiculo,
     deleteVehiculo
  }

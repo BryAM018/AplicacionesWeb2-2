@@ -1,45 +1,52 @@
-const express = require('express');
+const express =  require('express');
 const cors = require('cors');
-const { dbConnection } = require('./database/config');
 
-class Server {
-  constructor() {
-    this.app = express();
-    this.port = process.env.PORT || 3000;
+//const { dbConnection } =  require('./database/config');
 
-    this.paths = {
-      parqueos: '/api/parqueos',
-      espacios: '/api/espacios',
-      vehiculos: '/api/vehiculos',
-    };
+class Server 
+{
+    constructor()
+    {
+        this.app = express.Router();
+        this.router = express.Router();
 
-    this.connectDB();
-    this.middlewares();
-    this.routes();
-  }
+        this.port = process.env.PORT;
 
-  async connectDB() {
-    await dbConnection();
-  }
+        this.paths = {
+            parqueos: '/api/parqueos',
+            espacios: '/api/espacios'
+        }
 
-  middlewares() {
-    this.app.use(cors());
-    this.app.use(express.json());
-    this.app.use(express.static('public'));
-    this.app.use('/uploads/', express.static('uploads'));
-  }
+  //      this.connectDB();
+        this.middlewares();
+        this.routes();
+        this.router.use('/v1/inventory', this.app);
+        this._express = express().use(this.router);
+    }
+    async connectDB(){
+        await dbConnection();
+    }
+    middlewares(){
+        this.app.use(cors());
+        this.app.use(express.json())
+        this.app.use(express.static('public'));
+        this.app.use( '/uploads/', express.static('uploads'))
 
-  routes() {
-    this.app.use(this.paths.parqueos, require('./routes/parqueos'));
-    this.app.use(this.paths.espacios, require('./routes/espacios'));
-    this.app.use(this.paths.vehiculos, require('./routes/vehiculos'));
-  }
+    }
+    routes(){
+        this.app.use(this.paths.parqueos, require('./routes/parqueos')   )
+        this.app.use(this.paths.espacios, require('./routes/espacios')   )
+        this.app.use(this.paths.vehiculos, require('./routes/vehiculos')   )
+    }
 
-  listen() {
-    this.app.listen(this.port, () => {
-      console.log(`Servidor ejecutándose en puerto ${this.port}`);
-    });
-  }
+    listen(){
+        this._express.listen(this.port, ()=>{
+            console.log(`Servidor ejecuntando en puerto ${this.port}`)
+        })
+    }
+
+
 }
+
 
 module.exports = Server;

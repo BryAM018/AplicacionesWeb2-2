@@ -1,4 +1,4 @@
-
+const { model, Schema } = require('mongoose');
 const VehiculoSchema = Schema(
     {
         descripcion:{

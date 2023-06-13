@@ -15,6 +15,7 @@ const { validateFields } = require('../middlewares')
 const router= Router();
 
 router.get('/', getEspacios );
+
 router.get('/:id'
 ,check('id', 'Este no es un ID de Mongo correcto').isMongoId()
  , getEspacio );
@@ -28,7 +29,7 @@ router.get('/:id'
  router.put('/:id', updateEspacio);
 
  router.delete('/:id',[
-    check('id','Debe ser un id de mongo VALIDO').isMongoId()
+   check('id','Debe ser un id de mongo VALIDO').isMongoId()
 ], deleteEspacio);
 
 

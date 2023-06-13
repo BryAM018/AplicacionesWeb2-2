@@ -1,4 +1,4 @@
-/*const  mongoose =  require('mongoose');
+const  mongoose =  require('mongoose');
 
 
 const dbConnection = async ()=>{
@@ -15,4 +15,4 @@ const dbConnection = async ()=>{
 }
 module.exports = {
     dbConnection
-}*/
+}

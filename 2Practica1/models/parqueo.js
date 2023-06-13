@@ -1,8 +1,8 @@
-
+const { model, Schema } = require('mongoose');
 const ParqueoSchema = Schema(
     {
         entrada:{
-            type: new date,
+            type: date,
             required: [true,   "La fecha de entrada es obligatorio"],
             unique: true
         },
@@ -22,10 +22,11 @@ const ParqueoSchema = Schema(
             required: false
         }
     }
-)
+);
+
 ParqueoSchema.methods.toJSON = function(){
     const { __v,  status,  ...data   } =  this.toObject();
     return data;
 }
 
-module.exports = model("Parqueo", ParqueSchema );
+module.exports = model("Parqueo", ParqueoSchema);

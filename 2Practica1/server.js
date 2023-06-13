@@ -1,7 +1,7 @@
 const express =  require('express');
 const cors = require('cors');
 
-//const { dbConnection } =  require('./database/config');
+const { dbConnection } =  require('./database/config');
 
 class Server 
 {
@@ -14,10 +14,11 @@ class Server
 
         this.paths = {
             parqueos: '/api/parqueos',
-            espacios: '/api/espacios'
+            espacios: '/api/espacios',
+            vehiculos: '/api/vehiculos'
         }
 
-  //      this.connectDB();
+     this.connectDB();
         this.middlewares();
         this.routes();
         this.router.use('/v1/inventory', this.app);

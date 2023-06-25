@@ -18,13 +18,13 @@ class Server
             vehiculos: '/api/vehiculos'
         }
 
-     this.connectDB();
+    this.connectDB();
         this.middlewares();
         this.routes();
         this.router.use('/v1/inventory', this.app);
         this._express = express().use(this.router);
     }
-    async connectDB(){
+   async connectDB(){
         await dbConnection();
     }
     middlewares(){

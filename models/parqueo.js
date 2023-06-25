@@ -2,12 +2,12 @@ const { model, Schema } = require('mongoose');
 const ParqueoSchema = Schema(
     {
         entrada:{
-            type: date,
+            type: Date,
             required: [true,   "La fecha de entrada es obligatorio"],
             unique: true
         },
         salida:{
-            type: date,
+            type: Date,
             required: [true],
             unique: true
         },

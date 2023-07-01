@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  espacios:
+    build: ./espacios
+    depends_on:
+      - dataespacio
+    environment:
+      - PORT=3000
+      - MONGODB_CNN=mongodb://dataespacio:27017/test
+    # ports:
+    #   - "2500:2500"
+  parqueos:
+    build: ./parqueos
+    depends_on:
+      - dataparqueo
+    environment:
+      - PORT=3000
+      - MONGODB_CNN=mongodb://dataparqueo:27017/test
+  vehiculos:
+      build: ./vehiculos
+      depends_on:
+        - datavehiculo
+      environment:
+        - PORT=3000
+        - MONGODB_CNN=mongodb://datavehiculo:27017/test
+  dataespacio:
+    image: mongo
+    # ports:
+    #   - "27017:27017"
+  dataparqueo:
+    image: mongo
+    # ports:
+    #   - "27017:27017"
+  datavehiculo:
+    image: mongo
+    # ports:
+    #   - "27017:27017"
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - vehiculos
+      - parqueos
+      - espacios

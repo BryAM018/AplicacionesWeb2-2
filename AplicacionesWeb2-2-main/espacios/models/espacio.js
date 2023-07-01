@@ -10,6 +10,16 @@ const EspacioSchema = Schema(
             type: Boolean,
             default: true,
             required:true
+        },
+        espacio:{
+            type: String,
+            ref:"Espacio",
+            required: false
+        },
+        vehiculo:{
+            type: String,
+            ref:"Vehiculo",
+            required: false
         }
     }
 );

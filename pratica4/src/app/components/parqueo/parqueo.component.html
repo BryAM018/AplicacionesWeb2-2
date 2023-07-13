@@ -3,10 +3,10 @@
     <form #loginForm="ngForm" (ngSubmit)="parqueosData(loginForm.value)">
       <div class="main" id="parqueo">
         <div class="input-fields">
-          <input name="entrada" ngModel placeholder="Entrada de vehiculo" id="entrada" type="datetime" class="input-field" />
+          <input name="entrada" ngModel placeholder="Entrada de vehiculo" id="entrada" type="datetime-local" class="input-field" />
         </div>
         <div class="input-fields">
-          <input name="salida" ngModel placeholder="HORA de salida" id="salida" type="datetime" class="input-field" />
+          <input name="salida" ngModel placeholder="HORA de salida" id="salida" type="datetime-local" class="input-field" />
         </div>
         <div class="input-fields">
           <input name="espacio" ngModel placeholder="Espacio de vehiculo" id="espacio" type="text" class="input-field" />

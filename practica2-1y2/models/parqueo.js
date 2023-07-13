@@ -17,7 +17,7 @@ const ParqueoSchema = Schema(
             required: false
         },
         vehiculo:{
-            type: Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,    
             ref:"Vehiculo",
             required: false
         }

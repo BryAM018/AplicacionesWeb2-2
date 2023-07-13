@@ -1,7 +1,7 @@
 <p>espacio works!</p>
 
  <!-- form Espacio-  -->
- <div>
+ <div class="card-body">
     <form #loginForm="ngForm" (ngSubmit)="espaciosData(loginForm.value)">
      
       <div class="main" id="fespacio">
@@ -17,6 +17,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let espacio of dataEspacio.espacios">
+
           <td>{{espacio.descripcion}}</td>
         </tr>
       </tbody>

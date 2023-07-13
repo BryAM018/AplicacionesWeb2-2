@@ -7,7 +7,7 @@ import { IEspacio, IEspacios } from '../interfaces/IEspacio';
   providedIn: 'root'
 })
 export class EspaciosService {
-  private baseURL = `http://localhost:3000/v1/inventory`
+  private baseURL = `http://localhost:2500/v1/inventory/api`
 
   constructor(private http: HttpClient) { }
 

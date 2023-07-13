@@ -1,0 +1,24 @@
+<p>espacio works!</p>
+
+ <!-- form Espacio-  -->
+ <div>
+    <form #loginForm="ngForm" (ngSubmit)="espaciosData(loginForm.value)">
+     
+      <div class="main" id="fespacio">
+        <div class="input-fields">
+          <input name="descripcion" ngModel placeholder="Descripcion" id="descripcion" type="text" class="input-field" />
+        </div>
+        <button>Espacio- Data </button>
+      </div>
+    </form>
+    <table border="1">
+      <thead>
+        <th>Descripcion</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let espacio of dataEspacio.espacios">
+          <td>{{espacio.descripcion}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

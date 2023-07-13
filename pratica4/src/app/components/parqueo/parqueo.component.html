@@ -1,0 +1,36 @@
+<p>parqueo works!</p>
+<div>
+    <form #loginForm="ngForm" (ngSubmit)="parqueosData(loginForm.value)">
+      <div class="main" id="parqueo">
+        <div class="input-fields">
+          <input name="entrada" ngModel placeholder="Entrada de vehiculo" id="entrada" type="datetime" class="input-field" />
+        </div>
+        <div class="input-fields">
+          <input name="salida" ngModel placeholder="HORA de salida" id="salida" type="datetime" class="input-field" />
+        </div>
+        <div class="input-fields">
+          <input name="espacio" ngModel placeholder="Espacio de vehiculo" id="espacio" type="text" class="input-field" />
+        </div>
+        <div class="input-fields">
+          <input name="vehiculo" ngModel placeholder="vehiculo" id="vehiculo" type="text" class="input-field" />
+        </div>
+        <button>Vehiculo Data </button>
+      </div>
+    </form>
+    <table border="1">
+      <thead>
+        <th>Entrada</th>
+        <th>salida</th>
+        <th>espacio</th>
+        <th>Vehiculo</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let parqueo of dataParqueo.parqueos">
+          <td>{{parqueo.entrada}}</td>
+          <td>{{parqueo.salida}}</td>
+          <td>{{parqueo.espacio}}</td>
+          <td>{{parqueo.vehiculo}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { Axios } from 'axios';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EspacioComponent } from './components/espacio/espacio.component';
@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

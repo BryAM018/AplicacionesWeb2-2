@@ -32,5 +32,7 @@ export class EspacioComponent {
         console.log(response)
       })
   }
-
+  onEdit(espacio: IEspacio) {
+    
+  }
 }

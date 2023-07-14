@@ -4,6 +4,7 @@ export interface IEspacios {
 }
 
 export interface IEspacio {
+
     _id?:     string;
     descripcion:    string;
 

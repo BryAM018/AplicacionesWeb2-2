@@ -9,10 +9,15 @@
           <input name="salida" ngModel placeholder="HORA de salida" id="salida" type="datetime-local" class="input-field" />
         </div>
         <div class="input-fields">
-          <input name="espacio" ngModel placeholder="Espacio de vehiculo" id="espacio" type="text" class="input-field" />
-        </div>
+          <select name="espacio" id="espacio" class="form-control">
+            <option *ngFor="let espacio of dataEspacio" [value]="espacio">{{espacio}}</option>
+          </select></div>
+          <div class="input-fields">
+            <select name="vehiculo" id="vehiculo" class="form-control">
+              <option *ngFor="let vehiculo of dataVehiculo" [value]="vehiculo">{{vehiculo}}</option>
+            </select></div>
         <div class="input-fields">
-          <input name="vehiculo" ngModel placeholder="vehiculo" id="vehiculo" type="text" class="input-field" />
+          <input name="vehiculo" ngModel placeholder="vehiculo" id="vehiculo" type="search" class="input-field" />
         </div>
         <button>Vehiculo Data </button>
       </div>
@@ -21,15 +26,13 @@
       <thead>
         <th>Entrada</th>
         <th>salida</th>
-        <th>espacio</th>
-        <th>Vehiculo</th>
+
       </thead>
       <tbody>
         <tr *ngFor="let parqueo of dataParqueo.parqueos">
           <td>{{parqueo.entrada}}</td>
           <td>{{parqueo.salida}}</td>
-          <td>{{parqueo.espacio}}</td>
-          <td>{{parqueo.vehiculo}}</td>
+
         </tr>
       </tbody>
     </table>

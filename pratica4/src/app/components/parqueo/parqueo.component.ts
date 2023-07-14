@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-
 import { ParqueosService } from "../../services/parqueos.service";
 import { IParqueo,IParqueos } from '../../interfaces/IParqueo';
+import { IEspacio,IEspacios } from "../../interfaces/IEspacio";
+import { IVehiculo,IVehiculos } from 'src/app/interfaces/IVehiculo';
 
 @Component({
   selector: 'app-parqueo',
@@ -10,7 +11,8 @@ import { IParqueo,IParqueos } from '../../interfaces/IParqueo';
 })
 export class ParqueoComponent {
   dataParqueo:IParqueos = { sum:0, parqueos:[] };
-
+  dataEspacio:IEspacios[] = [];
+  dataVehiculo:IVehiculos[] = [];
   constructor(
     
     private parqueosServices: ParqueosService,

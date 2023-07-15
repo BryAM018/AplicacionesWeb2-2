@@ -15,12 +15,14 @@ const { validateFields } = require('../middlewares')
 const router= Router();
 
 router.get('/', getVehiculos );
+
 router.get('/:id'
 ,check('id', 'Este no es un ID de Mongo correcto').isMongoId()
  , getVehiculo );
 
  router.post('/',[
    check('descripcion', 'EL nombre es requerido').not().isEmpty(),
+   check('placa', 'EL placa es requerido').not().isEmpty(),
     validateFields
 ], createVehiculo);
 

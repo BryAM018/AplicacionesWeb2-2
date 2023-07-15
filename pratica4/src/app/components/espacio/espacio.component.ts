@@ -33,7 +33,7 @@ export class EspacioComponent {
         console.log(response)
       })
   }
-  onEdit(espacio: IEspacio) {
+  onEdit(value: IEspacio) {
     
   }
 }

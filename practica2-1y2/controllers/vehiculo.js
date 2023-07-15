@@ -43,7 +43,7 @@ const createVehiculo = async(req,res=response)=>{
 
     const vehiculo = new Vehiculo(data);
 
-    const newVehiculo =  await Vehiculo.save();
+    const newVehiculo =  await vehiculo.save();
     res.status(201).json(newVehiculo);
 }
 const updateVehiculo = async(req,res =  response)=>{

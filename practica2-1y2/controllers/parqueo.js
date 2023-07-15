@@ -47,7 +47,7 @@ const createParqueo= async (req, res = response)=>{
 
     const parqueo = new Parqueo(data);
 
-    const newParqueo =  await Parqueo.save();
+    const newParqueo =  await parqueo.save();
     res.status(201).json(newParqueo);
 }
 const updateParqueo= async (req, res=response)=>{

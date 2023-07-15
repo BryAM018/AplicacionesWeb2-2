@@ -7,5 +7,5 @@ export interface IVehiculo {
     _id?:     string;
     descripcion:    string;
     placa:    string;
-    color:   string;
+    color:   EXT_sRGB;
 }

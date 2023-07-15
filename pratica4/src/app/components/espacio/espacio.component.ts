@@ -10,6 +10,7 @@ import { IEspacio,IEspacios } from '../../interfaces/IEspacio';
 })
 export class EspacioComponent {
   dataEspacio:IEspacios = { sum:0, espacios:[] };
+
   title:string = 'Espacio';
   constructor(
 

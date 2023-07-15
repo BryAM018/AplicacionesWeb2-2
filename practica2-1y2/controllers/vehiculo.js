@@ -32,7 +32,7 @@ const createVehiculo = async(req,res=response)=>{
     if (existVehiculo)
     {
         return res.status(400).json({
-            msg:`El vehiculo ${ existVehiculo.descripcion } ya existe`
+            msg:`El vehiculo ${ body.descripcion } ya existe`
         })
     }
 

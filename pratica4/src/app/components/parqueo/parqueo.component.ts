@@ -3,6 +3,8 @@ import { ParqueosService } from "../../services/parqueos.service";
 import { IParqueo,IParqueos } from '../../interfaces/IParqueo';
 import { IEspacio,IEspacios } from "../../interfaces/IEspacio";
 import { IVehiculo,IVehiculos } from 'src/app/interfaces/IVehiculo';
+import { EspaciosService } from 'src/app/services/espacios.service';
+
 
 @Component({
   selector: 'app-parqueo',
@@ -13,9 +15,11 @@ export class ParqueoComponent {
   dataParqueo:IParqueos = { sum:0, parqueos:[] };
   dataEspacio:IEspacios[] = [];
   dataVehiculo:IVehiculos[] = [];
+
   constructor(
     
     private parqueosServices: ParqueosService,
+    
   ) { 
     
   }

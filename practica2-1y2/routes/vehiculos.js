@@ -20,7 +20,7 @@ router.get('/:id'
  , getVehiculo );
 
  router.post('/',[
-   check('name', 'EL nombre es requerido').not().isEmpty(),
+   check('descripcion', 'EL nombre es requerido').not().isEmpty(),
     validateFields
 ], createVehiculo);
 

@@ -10,10 +10,11 @@ import { IParqueo, IParqueos } from '../interfaces/IParqueo';
 
 export class ParqueosService {
   private baseURL = `http://localhost:2500/v1/inventory/api`
-  public listaParqueos:Array<IParqueo> = Array<IParqueo>();
-  constructor(private http: HttpClient) {this.listaParqueos = [
-
-  ] }
+  
+  constructor(private http: HttpClient,
+ ) {
+    
+  }
   
 
   getAllData(): Observable<IParqueos> {

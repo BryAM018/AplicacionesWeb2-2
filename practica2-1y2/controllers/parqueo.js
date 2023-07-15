@@ -36,7 +36,7 @@ const createParqueo= async (req, res = response)=>{
     if (existParqueo)
     {
         return res.status(400).json({
-            msg:`El parqueoo ${ existParqueo.entrada } ya existe`
+            msg:`El parqueoo ${ body.entrada } ya existe`
         })
     }
 

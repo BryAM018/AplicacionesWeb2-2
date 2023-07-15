@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IEspacio, IEspacios } from '../interfaces/IEspacio';
 
+
 @Injectable({
   providedIn: 'root'
 })

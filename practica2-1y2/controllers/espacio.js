@@ -32,7 +32,7 @@ const createEspacio = async(req,res=response)=>{
     if (existEspacio)
     {
         return res.status(400).json({
-            msg:`El espacio ${ existEspacio.descripcion } ya existe`
+            msg:`El espacio ${ body.descripcion } ya existe`
         })
     }
 

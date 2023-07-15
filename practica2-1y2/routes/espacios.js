@@ -20,8 +20,8 @@ router.get('/:id'
 ,check('id', 'Este no es un ID de Mongo correcto').isMongoId()
  , getEspacio );
 
- router.post('/',[
-    check('name', 'EL nombre es requerido').not().isEmpty(),
+router.post('/',[
+    check('descripcion', 'EL nombre es requerido').not().isEmpty(),
     validateFields
 ], createEspacio);
 

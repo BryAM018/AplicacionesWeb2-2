@@ -21,7 +21,7 @@ class Server
 
         this.connectDB();
         this.addMiddleware();
-        this.routes();
+        this.configRoutes();
         this.router.use('/v1/inventory', this.app); 
         this._express = express().use(this.router);
     }

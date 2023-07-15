@@ -22,7 +22,7 @@ const getVehiculos = async (req,res = response )=>{
 const getVehiculo = async (req, res= response)=>{
     const {id} = req.params
     const vehiculo=  await Vehiculo.findById(id);
-    res.json(Vehiculo);
+    res.json(vehiculo);
 }
 const createVehiculo = async(req,res=response)=>{
     const { status, ...body } =  req.body;

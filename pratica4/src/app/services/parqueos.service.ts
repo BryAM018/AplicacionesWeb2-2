@@ -9,7 +9,7 @@ import { IParqueo, IParqueos } from '../interfaces/IParqueo';
 })
 
 export class ParqueosService {
-  private baseURL = `http://localhost:2500/v1/inventory/api`
+  private baseURL = `http://localhost:2500/v1/inventory`
   
   constructor(private http: HttpClient,
  ) {

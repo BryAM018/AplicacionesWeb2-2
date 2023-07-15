@@ -3,7 +3,7 @@ const { Espacio } = require('../models');
 
 
 const getEspacios = async (req,res = response )=>{
-    const { limite = 10 , desde=0 } =  req.query;
+    const { limite = 100 , desde=0 } =  req.query;
     const query = { status:true };
 
     const [ sum, espacios ] = await Promise.all([

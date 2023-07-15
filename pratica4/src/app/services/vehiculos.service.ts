@@ -8,7 +8,7 @@ import { IVehiculo, IVehiculos } from '../interfaces/IVehiculo';
   providedIn: 'root'
 })
 export class VehiculosService {
-  private baseURL = `http://localhost:2500/v1/inventory/api`
+  private baseURL = `http://localhost:2500/v1/inventory`
 
   constructor(private http: HttpClient) { }
 

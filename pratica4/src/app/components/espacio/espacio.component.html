@@ -1,25 +1,33 @@
 <p>espacio works!</p>
-
- <!-- form Espacio-  -->
- <div class="card-body">
-    <form #loginForm="ngForm" (ngSubmit)="espaciosData(loginForm.value)">
-     
-      <div class="main" id="fespacio">
-        <div class="input-fields">
-          <input name="descripcion" ngModel placeholder="Descripcion" id="descripcion" type="text" class="input-field" />
-        </div>
-        <button>Espacio- Data </button>
+<!-- Formulario Espacio -->
+<div class="card-body">
+  <form #loginForm="ngForm" (ngSubmit)="espaciosData(loginForm.value)">
+    <div class="main" id="fespacio">
+      <div class="input-fields">
+        <input name="descripcion" NgModel placeholder="Descripcion" id="descripcion" type="text" class="input-field"  />
       </div>
-    </form>
-    <table border="1">
-      <thead>
-        <th>Descripcion</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let espacio of dataEspacio.espacios">
-          <td>{{espacio.descripcion}}</td>
-        </tr>
+      <button>Espacio- Data</button>
+    </div>
+    
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Descripcion del espacio parqueadero</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let espacio of dataEspacio.espacios" >
+        <td>{{espacio._id}}</td>
+        <td>{{espacio.descripcion}}</td>
+        <td class="text-center"></td>
+        
+        <td>
+          <button (click)="editarEspacio(espacio)">Editar</button>
 
-      </tbody>
-    </table>
-  </div>
+          <button (click)="borrarEspacio(espacio)">Borrar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

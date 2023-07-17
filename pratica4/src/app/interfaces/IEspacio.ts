@@ -9,3 +9,7 @@ export interface IEspacio {
     descripcion:    string;
 
 }
+export interface espacioEditando{
+    _id?:     string;
+    descripcion:    string;
+}

@@ -18,12 +18,13 @@
     </form>
     <table border="1">
       <thead>
-        <th>Descripcion</th>
-        <th>Placa</th>
-        <th>Color</th>
+        <th>Descripcion del vechiculo</th>
+        <th>Placa del vehiculo</th>
+        <th>color del vehiculo</th>
       </thead>
       <tbody>
         <tr *ngFor="let vehiculo of dataVehiculos.vehiculos">
+          <td>{{vehiculo._id}}</td>
           <td>{{vehiculo.descripcion}}</td>
           <td>{{vehiculo.placa}}</td>
           <td>{{vehiculo.color}}</td>

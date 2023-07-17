@@ -2,13 +2,12 @@
 <!-- Formulario Espacio -->
 <div class="card-body">
   <form #loginForm="ngForm" (ngSubmit)="espaciosData(loginForm.value)">
-    <div class="main" id="fespacio">
+    <div class="main" >
       <div class="input-fields">
         <input name="descripcion" NgModel placeholder="Descripcion" id="descripcion" type="text" class="input-field"  />
       </div>
       <button>Espacio- Data</button>
     </div>
-    
   </form>
   <table class="table">
     <thead>
@@ -17,14 +16,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let espacio of dataEspacio.espacios" >
+      <tr *ngFor="let espacio of dataEspacio.espacios"  >
         <td>{{espacio._id}}</td>
         <td>{{espacio.descripcion}}</td>
-        <td class="text-center"></td>
         
         <td>
-          <button (click)="editarEspacio(espacio)">Editar</button>
-
+          <!-- <button (click)="editarEspacio(espacio)">Editar</button>
+ -->
           <button (click)="borrarEspacio(espacio)">Borrar</button>
         </td>
       </tr>

@@ -31,5 +31,20 @@ export class VehiculoComponent {
           console.log(response)
         })
     }
-  
+    borrarVehiculo(vehiculo: any,) {
+
+      const index = this.dataVehiculos.vehiculos.findIndex(e => e._id === vehiculo._id);
+      
+      if (index !== -1) {
+        // El espacio existe en el arreglo, por lo tanto, lo eliminamos
+        this.dataVehiculos.vehiculos.splice(index, 1);
+        // Llamada al método de eliminación en el servicio espaciosServices
+        this.vehiculosServices.deleteData(vehiculo._id).subscribe(response => {
+          console.log(response);
+        });
+        
+        // Actualizar la suma total y otros cálculos relacionados si es necesario
+        this.ngOnInit();
+      }
+    }
 }

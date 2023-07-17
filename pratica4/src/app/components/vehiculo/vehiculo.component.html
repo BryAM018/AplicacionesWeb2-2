@@ -18,6 +18,7 @@
     </form>
     <table border="1">
       <thead>
+        <th>id</th>
         <th>Descripcion del vechiculo</th>
         <th>Placa del vehiculo</th>
         <th>color del vehiculo</th>
@@ -28,6 +29,7 @@
           <td>{{vehiculo.descripcion}}</td>
           <td>{{vehiculo.placa}}</td>
           <td>{{vehiculo.color}}</td>
+          <td><button (click)="borrarVehiculo(vehiculo)">Borrar</button></td>
         </tr>
       </tbody>
     </table>

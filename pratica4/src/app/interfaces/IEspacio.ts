@@ -4,12 +4,7 @@ export interface IEspacios {
 }
 
 export interface IEspacio {
-
     _id?:     string;
     descripcion:    string;
 
-}
-export interface espacioEditando{
-    _id?:     string;
-    descripcion:    string;
 }

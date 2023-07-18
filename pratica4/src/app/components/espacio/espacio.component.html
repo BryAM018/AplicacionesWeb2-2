@@ -9,7 +9,7 @@
       <button>Espacio- Data</button>
     </div>
   </form>
-  <table class="table">
+  <table border="1">
     <thead>
       <tr>
         <th>Descripcion del espacio parqueadero</th>
@@ -21,11 +21,28 @@
         <td>{{espacio.descripcion}}</td>
         
         <td>
-          <!-- <button (click)="editarEspacio(espacio)">Editar</button>
- -->
+          <button (click)="editarEspacio(espacio)">Editar</button>
+
           <button (click)="borrarEspacio(espacio)">Borrar</button>
         </td>
       </tr>
+       <!-- Agregar el formulario para editar vehículos -->
+<div *ngIf="editMode">
+  <form #editForm="ngForm" (ngSubmit)="actualizarEspacio(editForm.value)">
+    <div class="input-fields">
+      <input name="descripcion" ngModel placeholder="descripcion" id="descripcion" type="text" class="input-field" />
+    </div>
+    <div class="input-fields">
+      <input name="placa" ngModel placeholder="placa" id="placa" type="text" class="input-field" />
+    </div>
+    
+    
+  <div class="input-fields">
+      <input name="color" ngModel placeholder="color" id="color" type="color" class="input-field" />
+    </div>
+      <button>Guardar cambios</button>
+  </form>
+</div>
     </tbody>
   </table>
 </div>

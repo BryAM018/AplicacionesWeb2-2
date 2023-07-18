@@ -8,12 +8,11 @@
         <div class="input-fields">
           <input name="placa" ngModel placeholder="placa" id="placa" type="text" class="input-field" />
         </div>
-        
-        
       <div class="input-fields">
           <input name="color" ngModel placeholder="color" id="color" type="color" class="input-field" />
         </div>
         <button>Vehiculo Data </button>
+        
       </div>
     </form>
     <table border="1">
@@ -30,7 +29,25 @@
           <td>{{vehiculo.placa}}</td>
           <td>{{vehiculo.color}}</td>
           <td><button (click)="borrarVehiculo(vehiculo)">Borrar</button></td>
+          <button (click)="editarVehiculo(vehiculo)">Editar</button>
         </tr>
+        <!-- Agregar el formulario para editar vehículos -->
+<div *ngIf="editMode">
+  <form #editForm="ngForm" (ngSubmit)="actualizarVehiculo(editForm.value)">
+    <div class="input-fields">
+      <input name="descripcion" ngModel placeholder="descripcion" id="descripcion" type="text" class="input-field" />
+    </div>
+    <div class="input-fields">
+      <input name="placa" ngModel placeholder="placa" id="placa" type="text" class="input-field" />
+    </div>
+    
+    
+  <div class="input-fields">
+      <input name="color" ngModel placeholder="color" id="color" type="color" class="input-field" />
+    </div>
+      <button>Guardar cambios</button>
+  </form>
+</div>
       </tbody>
     </table>
   </div>

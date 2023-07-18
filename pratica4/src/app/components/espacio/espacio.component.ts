@@ -10,34 +10,28 @@ import { IEspacio,IEspacios} from '../../interfaces/IEspacio';
 })
 export class EspacioComponent {
   dataEspacio:IEspacios = { sum:0, espacios:[] };
-  title:string = 'Espacio';
+  editMode = false; // Variable para controlar el modo de edición
+  espacioEditando: IEspacio | null = null;
 
-
-  constructor(
-
-    private espaciosServices:EspaciosService
-  ) { 
-    
+  constructor(    private espaciosServices:EspaciosService, ) { 
   }
   ngOnInit() {
-    this.espaciosServices.getAllData().subscribe(data => {
+    this.espaciosServices.getAllData().
+    subscribe(data => {
         this.dataEspacio = data;
-
       });
-      
   }
   espaciosData(value: IEspacio) {
     let body:IEspacio = {
-     
       descripcion: value.descripcion,
     }
     this.espaciosServices.postData(body)
       .subscribe(response => {
         console.log(response)
-      });
+    });
   }
 
-  borrarEspacio(espacio: any,) {
+borrarEspacio(espacio: any,) {
 
     const index = this.dataEspacio.espacios.findIndex(e => e._id === espacio._id);
     
@@ -53,6 +47,24 @@ export class EspacioComponent {
       this.ngOnInit();
     }
   }
+  editarEspacio(espacio: IEspacio) {
+    this.editMode = true;
+    this.espacioEditando = { ...espacio }; // Clonamos el objeto para evitar modificar el original directamente
+    }
+  // Método para actualizar los datos del vehículo editado
+actualizarEspacio(espacioActualizado: any) {
 
-  
+  if (this.espacioEditando && this.espacioEditando._id) {
+    const index = this.dataEspacio.espacios.findIndex(e => e._id === this.espacioEditando!._id);
+
+    if (index !== -1) {
+      // Reemplazar el vehículo en el arreglo con el vehículo editado
+      this.dataEspacio.espacios[index] = espacioActualizado;
+      // Llamada al método de actualización en el servicio vehiculosServices
+      this.espaciosServices.updateData(espacioActualizado, this.espacioEditando!._id).subscribe(response => {
+        console.log(response);
+      });
+    }
+  }
+}
 }

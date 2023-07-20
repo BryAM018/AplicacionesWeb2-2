@@ -3,11 +3,14 @@ const { Parqueo } = require('../models')
 
 
 const getParqueos= async (req, res = response )=>{
-
-    //GET http://localhost:3000/parqueos   ?limit=100?since=1
+    //GET http://localhost:2500/parqueos   ?limit=10?since=1
     const { limit = 10 , since=0 } =  req.query;
     const query = { status:true };
-
+  if (isActive === "true") {
+    query.status = true;
+  } else if (isActive === "false") {
+    query.status = false;
+  }
     const [ sum, parqueos ] = await Promise.all([
         Parqueo.countDocuments(query),
         Parqueo.find(query)
@@ -15,7 +18,7 @@ const getParqueos= async (req, res = response )=>{
         .populate('espacio','entrada status')
         .skip(Number(since))
         .limit(Number(limit))
-    ])
+    ]);
   
     res.json({
       sum, 

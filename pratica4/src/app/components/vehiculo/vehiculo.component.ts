@@ -12,7 +12,8 @@ export class VehiculoComponent {
   editMode = false; // Variable para controlar el modo de edición
   vehiculoEditando: IVehiculo | null = null;
 
-  constructor(private vehiculosServices: VehiculosService,){
+  constructor(
+    private vehiculosServices: VehiculosService,){
   
   }
   ngOnInit() {

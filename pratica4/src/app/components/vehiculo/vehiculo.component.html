@@ -28,8 +28,11 @@
           <td>{{vehiculo.descripcion}}</td>
           <td>{{vehiculo.placa}}</td>
           <td>{{vehiculo.color}}</td>
-          <td><button (click)="borrarVehiculo(vehiculo)">Borrar</button></td>
-          <button (click)="editarVehiculo(vehiculo)">Editar</button>
+          <td>
+            <button (click)="borrarVehiculo(vehiculo)">Borrar</button></td>
+          <td>
+            <button (click)="editarVehiculo(vehiculo)">Editar</button>
+          </td>
         </tr>
         <!-- Agregar el formulario para editar vehículos -->
 <div *ngIf="editMode">
@@ -40,7 +43,6 @@
     <div class="input-fields">
       <input name="placa" ngModel placeholder="placa" id="placa" type="text" class="input-field" />
     </div>
-    
     
   <div class="input-fields">
       <input name="color" ngModel placeholder="color" id="color" type="color" class="input-field" />

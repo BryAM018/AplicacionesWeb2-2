@@ -5,16 +5,11 @@ import { IParqueo, IParqueos } from '../interfaces/IParqueo';
 
 @Injectable({
   providedIn: 'root'
-
 })
-
 export class ParqueosService {
   private baseURL = `http://localhost:2500/v1/inventory`
   
-  constructor(private http: HttpClient,
- ) {
-    
-  }
+  constructor(private http: HttpClient) {  }
   
 
   getAllData(): Observable<IParqueos> {

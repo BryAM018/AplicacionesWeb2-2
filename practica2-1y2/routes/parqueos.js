@@ -13,7 +13,7 @@ const { validateFields } = require('../middlewares')
 
 const router = Router();
 
-///     https://localhost:3000/api/v1/Parqueos/
+///     https://localhost:2500/api/v1/parqueos/
 
 router.get('/', getParqueos);
 
@@ -22,7 +22,8 @@ router.get('/:id'
    , getParqueo);
 
 router.post('/',[
-    check('name', 'El nombre es requerido').not().isEmpty(),
+    check('entrada','El nombre es requerido').not().isEmpty(),
+
     validateFields
 ] , createParqueo)
 

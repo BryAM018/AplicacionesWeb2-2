@@ -2,24 +2,27 @@ const { model, Schema } = require('mongoose');
 const ParqueoSchema = Schema(
     {
         entrada:{
-            type: Date,
+            type: String,
             required: [true,   "La fecha de entrada es obligatorio"],
             unique: true
         },
         salida:{
-            type: Date,
+            type: String,
             required: [true],
-            unique: true
         },
         espacio:{
-            type: Schema.Types.ObjectId,
-            ref:"Espacio",
-            required: false
+            type: String,
+            required: [true],
         },
         vehiculo:{
-            type: Schema.Types.ObjectId,    
-            ref:"Vehiculo",
-            required: false
+            type: String,    
+          
+            required: [true],
+        },
+        status:{
+            type: Boolean,
+            default: true,
+            required:true
         }
     }
 );

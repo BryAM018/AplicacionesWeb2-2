@@ -42,7 +42,26 @@ export class ParqueoComponent {
         this.dataVehiculo = data;
       });
   }
-  
+   // Método para cargar todos los parqueos
+   loadAllData() {
+    this.parqueosServices.getAllData().subscribe(data => {
+      this.dataParqueo = data;
+    });
+  }
+
+  // Método para cargar los parqueos activos (no eliminados)
+  loadActiveData() {
+    this.parqueosServices.getActiveData().subscribe(data => {
+      this.dataParqueo = data;
+    });
+  }
+
+  // Método para cargar los parqueos inactivos (eliminados)
+  loadInactiveData() {
+    this.parqueosServices.getInactiveData().subscribe(data => {
+      this.dataParqueo = data;
+    });
+  } 
 parqueosData(value: IParqueo) {
   let body:IParqueo = {
     entrada: value.entrada,

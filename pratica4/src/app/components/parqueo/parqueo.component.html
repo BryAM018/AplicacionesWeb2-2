@@ -24,14 +24,24 @@
         <button>Vehiculo Data </button>
       </div>
     </form>
+     <!-- Botones de filtro -->
+  <div class="filter-buttons">
+    <button (click)="loadAllData()">Todos</button>
+    <button (click)="loadActiveData()">Activos</button>
+    <button (click)="loadInactiveData()">Inactivos</button>
+  </div>
     <table border="1">
       <thead>
-        <th>ID</th>
+        <tr>
+                  <th>ID</th>
         <th> Fecha hora de entrada al parqueo</th>
         <th>Fecha hora de salida al parqueo</th>
         <th>Fecha hora de salida al parqueo</th>
         <th>ID espacio</th>
         <th>ID vehiculo</th>
+        <th>Acciones</th>
+        </tr>
+
       </thead>
       <tbody>
         <tr *ngFor="let parqueo of dataParqueo.parqueos">

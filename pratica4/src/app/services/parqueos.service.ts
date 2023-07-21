@@ -24,6 +24,14 @@ export class ParqueosService {
   deleteData(id: string): Observable<any> {
     return this.http.delete(`${this.baseURL}/parqueos/${id}`)
 }
+ // Método para obtener los parqueos activos (no eliminados)
+ getActiveData(): Observable<any> {
+  return this.http.get<any>(`${this.baseURL}/parqueos?isActive=true`);
+}
 
+// Método para obtener los parqueos inactivos (eliminados)
+getInactiveData(): Observable<any> {
+  return this.http.get<any>(`${this.baseURL}/parqueos?isActive=false`);
+}
 
 }

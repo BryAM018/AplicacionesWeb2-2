@@ -4,13 +4,10 @@ const { Parqueo } = require('../models')
 
 const getParqueos= async (req, res = response )=>{
     //GET http://localhost:2500/parqueos   ?limit=10?since=1
+    
     const { limit = 10 , since=0 } =  req.query;
-    const query = { status:true };
-  if (isActive === "true") {
-    query.status = true;
-  } else if (isActive === "false") {
-    query.status = false;
-  }
+    const query = { status:true};
+
     const [ sum, parqueos ] = await Promise.all([
         Parqueo.countDocuments(query),
         Parqueo.find(query)
@@ -19,12 +16,12 @@ const getParqueos= async (req, res = response )=>{
         .skip(Number(since))
         .limit(Number(limit))
     ]);
-  
+     
     res.json({
       sum, 
       parqueos
     })
-    
+
 }
 const getParqueo= async (req, res =  response)=>{
     const {id} = req.params
@@ -32,14 +29,14 @@ const getParqueo= async (req, res =  response)=>{
     res.json(parqueo);
 }
 const createParqueo= async (req, res = response)=>{
-    const { status, user, ...body } =  req.body;
-    
+    const { status, ...body } =  req.body;
+
     const existParqueo =  await Parqueo.findOne({entrada: body.entrada})
 
     if (existParqueo)
     {
         return res.status(400).json({
-            msg:`El parqueoo ${ body.entrada } ya existe`
+            msg:`El parqueo ${ body.entrada } ya existe`
         })
     }
 
@@ -57,13 +54,19 @@ const updateParqueo= async (req, res=response)=>{
     const {id} = req.params;
     const { status, ...data } =  req.body;
     // console.log(id,data)
-    const updatedParqueo =  await Parqueo.findByIdAndUpdate(id,data, {new: true} )
-    res.json(updatedParqueo);
+    const parqueoUpdated  =  await Parqueo.findByIdAndUpdate(id,data, {new: true} )
+    res.json(parqueoUpdated );
 }
-const deleteParqueo= async (req, res = response)=>{
-    const {id} = req.params;
-    const deletedParqueo =  await Parqueo.findByIdAndUpdate(id, {status:false}, {new:true} );
-    res.json(deletedParqueo);
+const deleteParqueo= async (req, res = response)=>{  
+    if (query === "true") {
+      const {id} = req.params;
+      const deletedParqueo =  await Parqueo.findBy(id, {status:false}, {new:true} );
+      res.json(deletedParqueo);
+    }  else if (query === "false") {
+      const {id} = req.params;
+      const deletedParqueo =  await Parqueo.findByIdAndUpdate(id, {status:false}, {new:true} );
+      res.json(deletedParqueo);
+    }
 }
 
 module.exports = {

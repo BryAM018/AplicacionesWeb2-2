@@ -18,6 +18,8 @@ export class ParqueoComponent {
   dataVehiculo:IVehiculos= { sum:0, vehiculos:[] };
   editMode = false; // Variable para controlar el modo de edición
   parqueoEditando: IParqueo | null = null;
+  selectedIds: string[] = [];
+selectedIdsString: string = '';
   constructor(
     
     private parqueosServices: ParqueosService,
@@ -49,19 +51,7 @@ export class ParqueoComponent {
     });
   }
 
-  // Método para cargar los parqueos activos (no eliminados)
-  loadActiveData() {
-    this.parqueosServices.getActiveData().subscribe(data => {
-      this.dataParqueo = data;
-    });
-  }
 
-  // Método para cargar los parqueos inactivos (eliminados)
-  loadInactiveData() {
-    this.parqueosServices.getInactiveData().subscribe(data => {
-      this.dataParqueo = data;
-    });
-  } 
 parqueosData(value: IParqueo) {
   let body:IParqueo = {
     entrada: value.entrada,
@@ -75,7 +65,7 @@ parqueosData(value: IParqueo) {
   })
 }  
 
-borrarVehiculo(parqueo: any,) {
+borrarPaqueo(parqueo: any,) {
 
   const index = this.dataParqueo.parqueos.findIndex(e => e._id === parqueo._id);
   
@@ -105,13 +95,43 @@ actualizarParqueo(parqueoActualizado: any) {
     const index = this.dataParqueo.parqueos.findIndex(e => e._id === this.parqueoEditando!._id);
 
     if (index !== -1) {
-      // Reemplazar el vehículo en el arreglo con el vehículo editado
+      // Reemplazar el vehículo
       this.dataParqueo.parqueos[index] = parqueoActualizado;
-      // Llamada al método de actualización en el servicio vehiculosServices
+      // Llamada al método de
       this.parqueosServices.updateData(parqueoActualizado, this.parqueoEditando!._id).subscribe(response => {
         console.log(response);
       });
     }
   }
 }
+toggleSelect(id: any) {
+  const index = this.selectedIds.indexOf(id);
+  if (index !== -1) {
+    this.selectedIds.splice(index, 1); // Desseleccionar
+  } else {
+    this.selectedIds.push(id); // Agregar
+  }
+  this.selectedIdsString = this.selectedIds.join(','); // Actualizar
+
+  console.log(this.selectedIds);  
+}
+borrarParqueos(idsString: string) {
+  const idArray = idsString.split(',');
+  // Validamos el mínimo de 2 y máximo de 10 transacciones
+  if (idArray.length < 2 || idArray.length > 10) {
+    console.log('Error: La cantidad de IDs seleccionados no es válida.');
+    return;
+  }
+
+  // Eliminar los parqueos seleccionados
+ this.parqueosServices.deleteDatas(idsString).subscribe(response => {
+  console.log(response);
+  // Actualizar 
+  this.loadAllData();
+});
+}
+mostrarIdsSeleccionados() {
+  console.log('IDs seleccionados:', this.selectedIdsString);
+}
+
 }

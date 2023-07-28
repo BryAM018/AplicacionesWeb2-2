@@ -6,10 +6,12 @@ const {
      getParqueo, 
      getParqueos,
      updateParqueo,
-     deleteParqueo 
+     deleteParqueo,
+     deleteParqueos,
     } = require('../controllers').Parqueo;
 
-const { validateFields } = require('../middlewares')
+const { validateFields } = require('../middlewares');
+
 
 const router = Router();
 
@@ -32,5 +34,10 @@ router.post('/',[
 router.delete('/:id',[
     check('id','Debe ser un id de mongo VALIDO').isMongoId()
 ], deleteParqueo)
+
+router.delete('/deleteParqueos/:id', [ //para que sea diferente
+    check('id', 'Debe ser un id de mongo VALIDO').isMongoId()
+], deleteParqueos);
+
 
 module.exports = router;

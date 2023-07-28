@@ -5,7 +5,7 @@ const { Parqueo } = require('../models')
 const getParqueos= async (req, res = response )=>{
     //GET http://localhost:2500/parqueos   ?limit=10?since=1
     
-    const { limit = 10 , since=0 } =  req.query;
+    const { limit = 100 , since=0 } =  req.query;
     const query = { status:true};
 
     const [ sum, parqueos ] = await Promise.all([
@@ -58,21 +58,30 @@ const updateParqueo= async (req, res=response)=>{
     res.json(parqueoUpdated );
 }
 const deleteParqueo= async (req, res = response)=>{  
-    if (query === "true") {
-      const {id} = req.params;
-      const deletedParqueo =  await Parqueo.findBy(id, {status:false}, {new:true} );
-      res.json(deletedParqueo);
-    }  else if (query === "false") {
-      const {id} = req.params;
-      const deletedParqueo =  await Parqueo.findByIdAndUpdate(id, {status:false}, {new:true} );
-      res.json(deletedParqueo);
-    }
-}
-
+    const {id} = req.params;
+    const deletedParqueo =  await (Parqueo.findByIdAndUpdate(id, {status:false}, {new:true}))  ;
+    res.json({deletedParqueo});       
+}  
+const deleteParqueos= async (req, res = response)=>{  
+    const {id} = req.params;
+    const idArray = id.split(',');
+      // Validamos el mínimo de 2 y máximo de 10 transacciones
+  if (idArray.length < 2) {
+    return res.status(400).json({ error: 'Se requieren al menos dos IDs para eliminar' });
+  } else if (idArray.length > 10) {
+    return res.status(400).json({ error: 'No se pueden eliminar más de 10 IDs a la vez' });
+  }
+    const deletedParqueos = await Promise.all(idArray.map(async (singleId) => {
+      const deletedParqueos = await Parqueo.findByIdAndUpdate(singleId, { status: false }, { new: true });
+      return deletedParqueos;
+    }));      res.json({deletedParqueos});       
+}  
+  
 module.exports = {
     getParqueo,
     getParqueos,
     createParqueo,
     updateParqueo,
-    deleteParqueo
+    deleteParqueo,
+    deleteParqueos,
 };
